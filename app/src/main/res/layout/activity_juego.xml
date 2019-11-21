@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Juego">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/lblNick"
+            android:textColor="#000"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Bienvenido"/>
+
+        <TextView
+            android:id="@+id/lblPista"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingrese un numero del 1 al 10" />
+
+        <EditText
+            android:id="@+id/txtNumeroElegido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/lblmensaje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Puntos: " />
+
+        <TextView
+            android:id="@+id/lblIntentos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Intentos: " />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnProbarSuerte"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="Probar Suerte" />
+        <Button
+            android:id="@+id/btnReiniciar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Reiniciar" />
+
+    </LinearLayout>
+</LinearLayout>
