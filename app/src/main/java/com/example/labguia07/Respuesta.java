@@ -2,15 +2,14 @@ package com.example.labguia07;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
-import com.example.labguia07.Juego;
-import java.util.Random;
 
 public class Respuesta extends AppCompatActivity {
 
     TextView txtAleatorio;
-    int Aleatorio;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +18,18 @@ public class Respuesta extends AppCompatActivity {
 
         txtAleatorio = findViewById(R.id.txtAleatorio);
 
-        String dato = getIntent().getStringExtra("Aleatorio");
+        sharedPreferences = this.getSharedPreferences("ArchivoPuntaje", this.MODE_PRIVATE);
 
-        txtAleatorio.setText(dato);
+        // Extraer dato
+        int NumAleatorio = sharedPreferences.getInt("NumAdivinar", 0);
+
+        txtAleatorio.setText(Integer.toString(NumAleatorio));
+
+        if (NumAleatorio != 0){
+            txtAleatorio.setText(Integer.toString(NumAleatorio));
+        }else {
+
+        }
 
     }
-
-    //private int generarAleatorio(){ return (int)(Math.random()*10+1);   }
 }

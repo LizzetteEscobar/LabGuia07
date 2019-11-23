@@ -2,12 +2,14 @@ package com.example.labguia07;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
 public class Puntajes extends AppCompatActivity {
 
     TextView txtAleatorio;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,8 +18,11 @@ public class Puntajes extends AppCompatActivity {
 
         txtAleatorio = findViewById(R.id.txtAleatorio);
 
-        String dato = getIntent().getStringExtra("puntos");
+        sharedPreferences = this.getSharedPreferences("ArchivoPuntaje", this.MODE_PRIVATE);
 
-        txtAleatorio.setText(dato);
+        // Extraer dato
+        int PuntajeActual = sharedPreferences.getInt("PuntajeActual", 0);
+
+        txtAleatorio.setText(Integer.toString(PuntajeActual));
     }
 }

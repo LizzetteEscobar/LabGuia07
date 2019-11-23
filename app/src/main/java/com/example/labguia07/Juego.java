@@ -2,7 +2,9 @@ package com.example.labguia07;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -36,6 +38,33 @@ public class Juego extends AppCompatActivity implements View.OnClickListener{
         Aleatorio=generarAleatorio();
         btnProbarSuerte.setOnClickListener(this);
         btnReiniciar.setOnClickListener(this);
+
+        final Context context = this;
+        SharedPreferences sharedPreferences = getSharedPreferences("ArchivoPuntaje", context.MODE_PRIVATE);
+
+        // Guardar dato
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        // Extraer dato
+        int NumGuardado = sharedPreferences.getInt("NumAdivinar",0);
+
+        if (Aleatorio == 0){
+            editor.putInt("NumAdivinar", Aleatorio);
+            editor.commit();
+            Toast.makeText(Juego.this,"No existe ningun valor guardado", Toast.LENGTH_SHORT).show();
+        }else {
+            Aleatorio = NumGuardado;
+        }
+
+        // Extraer dato
+        int PuntajeActual = sharedPreferences.getInt("PuntajeActual",0);
+
+        if (PuntajeActual == 0){
+            editor.putInt("PuntajeActual", puntos);
+            editor.commit();
+        }else {
+            puntos = PuntajeActual;
+        }
     }
 
     private int generarAleatorio(){ return (int)(Math.random()*10+1);   }
